@@ -1,5 +1,12 @@
-#include <iostream>
+#ifdef WIN32
+  #include <WindowHandling/MainWindow.hpp>
+  #include "windows.h"
+#endif
 
-int main() {
-	std::cout << "Hello world";
+#ifdef WIN32
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) 
+{
+  varco::MainWindow window(hInstance, hPrevInstance, lpCmdLine, nCmdShow);  
+  return window.show();
 }
+#endif
